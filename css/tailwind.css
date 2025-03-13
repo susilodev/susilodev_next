@@ -4,11 +4,14 @@
 @source '../node_modules/pliny';
 @custom-variant dark (&:where(.dark, .dark *));
 
+@import '@fontsource/jetbrains-mono/index.css';
+
 /* Core theme configuration */
 @theme {
   /* Font families */
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans: 'JetBrains Mono', monospace;
+  /* var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; */
 
   /* Colors */
   /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
@@ -162,6 +165,14 @@ input:-webkit-autofill:focus {
   opacity: 0;
   margin-left: -24px;
   padding-right: 4px;
+}
+
+.debug-red {
+  border: 2px solid red !important;
+}
+
+.debug-green {
+  border: 2px solid green !important;
 }
 
 .content-header:hover .content-header-link,

@@ -7,6 +7,7 @@ export default function DarkActivator() {
 
   useEffect(() => {
     setTheme('dark')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return null

@@ -5,10 +5,14 @@ import type { MDXComponents } from 'mdx/types'
 import Image from './Image'
 import CustomLink from './Link'
 import TableWrapper from './TableWrapper'
+import DynamicChart from './mdx/DynamicChart'
+import Mermaid from './mdx/Mermaid'
 
 export const components: MDXComponents = {
   Image,
+  Mermaid,
   TOCInline,
+  DynamicChart,
   a: CustomLink,
   pre: Pre,
   table: TableWrapper,

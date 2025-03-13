@@ -12,20 +12,26 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 })
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default [
   {
-    ignores: [],
+    ignores: ['node_modules/', 'dist/', '.next/'], // Tambahkan folder yang harus di-ignore
   },
   js.configs.recommended,
   ...compat.extends(
-    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
+    'plugin:mdx/recommended',
     'next',
     'next/core-web-vitals'
   ),
   {
+    settings: {
+      'mdx/code-blocks': true,
+      'mdx/language-mapper': {},
+    },
+
     plugins: {
       '@typescript-eslint': typescriptEslint,
     },
@@ -38,19 +44,24 @@ export default [
       },
 
       parser: tsParser,
-      ecmaVersion: 5,
-      sourceType: 'commonjs',
-
       parserOptions: {
-        project: true,
+        extraFileExtensions: ['.mdx'],
         tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json'], // Pastikan tsconfig.json ada
       },
     },
 
     rules: {
       'prettier/prettier': 'error',
       'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'react/no-unescaped-entities': 'off',
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-var-requires': 'off',
+      '@typescript-eslint/ban-ts-comment': 'off',
 
+      // Aturan A11y untuk Next.js
       'jsx-a11y/anchor-is-valid': [
         'error',
         {
@@ -59,12 +70,9 @@ export default [
           aspects: ['invalidHref', 'preferButton'],
         },
       ],
-      'react/prop-types': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
-      'react/no-unescaped-entities': 'off',
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
-      '@typescript-eslint/no-var-requires': 'off',
-      '@typescript-eslint/ban-ts-comment': 'off',
+
+      // Maksimal panjang kode (warning, bukan error)
+      // 'max-len': ['warn', { code: 100, ignoreUrls: true, ignoreComments: true }],
     },
   },
 ]
