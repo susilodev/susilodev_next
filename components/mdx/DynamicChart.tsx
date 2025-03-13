@@ -5,7 +5,6 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'rec
 interface ChartProps {
   id: string
   type: 'line' | 'bar'
-  options?: Record<string, any>
   data: {
     labels: string[]
     datasets: {
@@ -17,7 +16,7 @@ interface ChartProps {
   }
 }
 
-export default function DynamicChart({ id, type, options, data }: ChartProps) {
+export default function DynamicChart({ id, type, data }: ChartProps) {
   // Pastikan data tetap dalam urutan asli
   const chartData = data.labels.map((label, index) => ({
     name: label,

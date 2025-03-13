@@ -1,6 +1,5 @@
 'use client'
 
-import siteMetadata from '@/data/siteMetadata'
 import { useEffect, useState } from 'react'
 
 const ScrollTopAndComment = () => {
@@ -19,9 +18,7 @@ const ScrollTopAndComment = () => {
   const handleScrollTop = () => {
     window.scrollTo({ top: 0 })
   }
-  const handleScrollToComment = () => {
-    document.getElementById('comment')?.scrollIntoView()
-  }
+
   return (
     <div
       className={`fixed right-4 bottom-8 z-100 flex-col gap-3 md:right-8 ${show ? 'md:flex' : 'md:hidden'}`}

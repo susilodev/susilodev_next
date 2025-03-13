@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { cn } from 'utils'
 
 interface ButtonExploreProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string
@@ -14,7 +15,10 @@ const ButtonExplore = React.forwardRef<HTMLAnchorElement, ButtonExploreProps>(
         ref={ref}
         target="_blank"
         href={href}
-        className="mt-10 ml-4 border-[0.80px] px-5 py-3 text-xs !text-slate-200 no-underline hover:font-bold"
+        className={cn(
+          'mt-10 ml-4 border-[0.80px] px-5 py-3 text-xs !text-slate-200 no-underline hover:font-bold',
+          className
+        )}
         {...props}
       >
         {children}
