@@ -7,10 +7,12 @@ import CustomLink from './Link'
 import TableWrapper from './TableWrapper'
 import DynamicChart from './mdx/DynamicChart'
 import Mermaid from './mdx/Mermaid'
+import ButtonExplore from './mdx/ButtonExplore'
 
 export const components: MDXComponents = {
   Image,
   Mermaid,
+  ButtonExplore,
   TOCInline,
   DynamicChart,
   a: CustomLink,
